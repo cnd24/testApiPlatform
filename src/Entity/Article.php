@@ -9,7 +9,6 @@ use JMS\Serializer\Annotation as Serializer;
 /**
  * @ApiResource()
  * @ORM\Entity(repositoryClass="App\Repository\ArticleRepository")
- * @Serializer\ExclusionPolicy("all")
  */
 class Article
 {
@@ -17,19 +16,19 @@ class Article
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
-     * @Serializer\Expose()
+     * @Serializer\Groups({"list"})
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
-     * @Serializer\Expose()
+     * @Serializer\Groups({"list", "detail"})
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
-     * @Serializer\Expose()
+     * @Serializer\Groups({"list", "detail"})
      */
     private $content;
 

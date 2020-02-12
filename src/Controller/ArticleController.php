@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\Article;
+use JMS\Serializer\SerializationContext;
 use JMS\Serializer\SerializerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -33,7 +34,7 @@ class ArticleController extends AbstractController
      */
     public function showAction(Article $article, SerializerInterface $serializer)
     {
-        $data = $serializer->serialize($article, 'json');
+        $data = $serializer->serialize($article, 'json', SerializationContext::create()->setGroups(array('detail')));
 
         $response = new Response($data);
         $response->headers->set('Content-Type', 'application/json');
@@ -49,7 +50,7 @@ class ArticleController extends AbstractController
     {
         $articles = $this->getDoctrine()->getRepository(Article::class)->findAll();
 
-        $data = $serializer->serialize($articles, 'json');
+        $data = $serializer->serialize($articles, 'json', SerializationContext::create()->setGroups(array('list')));
 
         $response = new Response($data);
         $response->headers->set('Content-Type', 'application/json');
