@@ -6,7 +6,6 @@ use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as Serializer;
 
-
 /**
  * @ApiResource()
  * @ORM\Entity(repositoryClass="App\Repository\ArticleRepository")
@@ -18,16 +17,19 @@ class Article
      * @ORM\Id()
      * @ORM\GeneratedValue()
      * @ORM\Column(type="integer")
+     * @Serializer\Expose()
      */
     private $id;
 
     /**
      * @ORM\Column(type="string", length=255)
+     * @Serializer\Expose()
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
+     * @Serializer\Expose()
      */
     private $content;
 
