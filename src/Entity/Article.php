@@ -4,10 +4,13 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
+use JMS\Serializer\Annotation as Serializer;
+
 
 /**
  * @ApiResource()
  * @ORM\Entity(repositoryClass="App\Repository\ArticleRepository")
+ * @Serializer\ExclusionPolicy("all")
  */
 class Article
 {
