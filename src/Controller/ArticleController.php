@@ -34,7 +34,7 @@ class ArticleController extends AbstractController
      */
     public function showAction(Article $article, SerializerInterface $serializer)
     {
-        $data = $serializer->serialize($article, 'json', SerializationContext::create()->setGroups(array('detail')));
+        $data = $serializer->serialize($article, 'json', SerializationContext::create()->setGroups(array('list')));
 
         $response = new Response($data);
         $response->headers->set('Content-Type', 'application/json');
