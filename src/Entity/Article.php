@@ -43,14 +43,26 @@ class Article
     /**
      * @ORM\Column(type="string", length=255)
      * @Serializer\Groups({"list", "detail"})
+     *
+     * @Serializer\Since("1.0")
      */
     private $title;
 
     /**
      * @ORM\Column(type="text")
      * @Serializer\Groups({"list", "detail"})
+     *
+     * @Serializer\Since("1.0")
      */
     private $content;
+
+    /**
+     * @ORM\Column(type="text", nullable=true)
+     * @Serializer\Groups({"list", "detail"})
+     *
+     * @Serializer\Since("2.0")
+     */
+    private $shortDescription;
 
     public function getId(): ?int
     {
@@ -77,6 +89,18 @@ class Article
     public function setContent(string $content): self
     {
         $this->content = $content;
+
+        return $this;
+    }
+
+    public function getShortDescription(): ?string
+    {
+        return $this->shortDescription;
+    }
+
+    public function setShortDescription(?string $shortDescription): self
+    {
+        $this->shortDescription = $shortDescription;
 
         return $this;
     }

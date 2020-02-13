@@ -51,6 +51,8 @@ class ArticleController extends AbstractController
         $articles = $this->getDoctrine()->getRepository(Article::class)->findAll();
 
         $data = $serializer->serialize($articles, 'json', SerializationContext::create()->setGroups(array('list')));
+/*        $data = $serializer->serialize($articles, 'json', SerializationContext::create()->setVersion("2.0"));*/
+
 
         $response = new Response($data);
         $response->headers->set('Content-Type', 'application/json');
