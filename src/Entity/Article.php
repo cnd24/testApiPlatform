@@ -20,6 +20,15 @@ use Hateoas\Configuration\Annotation as Hateoas;
  *     ),
  *     exclusion = @Hateoas\Exclusion( groups = {"list", "detail"} )
  * )
+ *
+ * @Hateoas\Relation(
+ *     "create",
+ *     href = @Hateoas\Route(
+ *          "article_create",
+ *          absolute = true,
+ *     ),
+ *     exclusion = @Hateoas\Exclusion( groups = {"list", "detail"} )
+ * )
  */
 class Article
 {
